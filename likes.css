@@ -1,0 +1,32 @@
+.likes {
+  width: 935px;
+  height: 85vh;
+  background-color: white;
+}
+
+.likes-header {
+  height: 40px;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+}
+
+.likes-header.first {
+  border-top: none !important;
+  border-bottom: 1px solid #efefef;
+}
+
+.likes-users {
+  padding-right: 16px;
+}
+
+.likes-user {
+  height: 60px;
+}
+
+.likes-user img {
+  height: 100%;
+  padding: 8px 16px;
+}

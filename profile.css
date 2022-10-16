@@ -1,0 +1,110 @@
+.profile-header {
+  height: 160px;
+}
+
+.profile-logo {
+  width: 300px;
+}
+
+.profile-login {
+  gap: 20px;
+}
+
+.profile-stats {
+  gap: 30px;
+}
+
+.profile-info {
+  height: 100%;
+  padding-left: 40px;
+}
+
+.profile {
+  width: 940px;
+}
+
+.profile-nav {
+  margin-top: 40px;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  height: 52px;
+  gap: 50px;
+}
+
+.profile-nav a {
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.profile-nav svg {
+  margin-right: 10px;
+}
+
+.profile-nav .active {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border-bottom: 1px solid #8d8d8d;
+  border-top: 1px solid #8d8d8d;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 24px;
+  grid-template-areas:
+    "first second third"
+    "forth fifth six"
+    "seven eight nine";
+}
+
+.mb24 {
+  margin-bottom: 24px;
+}
+
+.grid img {
+  width: 100%;
+}
+.grid img:hover {
+  cursor: pointer;
+}
+
+.first {
+  grid-area: first;
+}
+
+.second {
+  grid-area: second;
+}
+
+.third {
+  grid-area: third;
+}
+
+.forth {
+  grid-area: forth;
+}
+
+.fifth {
+  grid-area: fifth;
+}
+
+.six {
+  grid-area: six;
+}
+
+.seven {
+  grid-area: seven;
+}
+
+.eight {
+  grid-area: eight;
+}
+
+.nine {
+  grid-area: nine;
+}

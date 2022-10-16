@@ -1,0 +1,50 @@
+.explore {
+  width: 1000px;
+}
+.grid-1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 24px;
+  grid-template-areas:
+    "first third third"
+    "second third third"
+    "forth fifth six";
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 24px;
+  grid-template-areas:
+    "first second third"
+    "forth forth fifth"
+    "forth forth six";
+}
+.mb24 {
+  margin-bottom: 24px;
+}
+.explore img {
+  width: 100%;
+}
+.explore img:hover {
+  cursor: pointer;
+}
+.first {
+  grid-area: first;
+}
+.second {
+  grid-area: second;
+}
+.third {
+  grid-area: third;
+}
+.forth {
+  grid-area: forth;
+}
+.fifth {
+  grid-area: fifth;
+}
+.six {
+  grid-area: six;
+}

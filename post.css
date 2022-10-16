@@ -1,0 +1,15 @@
+
+.post {
+  width: 935px;
+  height: 85vh;
+  background-color: white;
+}
+
+.post-header {
+  border-bottom: 1px solid #efefef;
+  height: 42px;
+}
+
+.post-content {
+  height: 90%;
+}
