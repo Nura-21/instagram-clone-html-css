@@ -11,7 +11,7 @@
   </head>
   <body>
     <header class="header">
-      <a href="index.html" class="header-logo"
+      <a href="index.php" class="header-logo"
         ><img src="images/logo.png" alt="Logo"
       /></a>
 
@@ -20,7 +20,7 @@
         <input type="text" placeholder="Поиск" />
       </div>
       <nav class="header-nav">
-        <a href="index.html" class="header-nav-link">
+        <a href="index.php" class="header-nav-link">
           <svg
             aria-label="Главная страница"
             class="_ab6-"
@@ -60,7 +60,7 @@
             ></path>
           </svg>
         </a>
-        <a href="post.html" class="header-nav-link">
+        <a href="post.php" class="header-nav-link">
           <svg
             aria-label="Новая публикация"
             class="_ab6-"
@@ -154,7 +154,7 @@
             ></path>
           </svg>
         </a>
-        <a href="profile.html" class="header-nav-link img">
+        <a href="profile.php" class="header-nav-link img">
           <img src="images/cat.jpg" alt="" width="26px" />
         </a>
       </nav>
@@ -429,7 +429,7 @@
       <section class="main-right flex col">
         <div class="main-my flex row align-center justify-between">
           <div class="main-my-left flex align-center">
-            <a href="profile.html" class="flex align-center" style="text-decoration: none; color: inherit;">
+            <a href="profile.php" class="flex align-center" style="text-decoration: none; color: inherit;">
               <img src="images/cat.jpg" alt="" width="60" height="60" />
               <div class="flex col">
                 
