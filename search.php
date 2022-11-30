@@ -24,7 +24,7 @@ if(isset($_POST['search_submit']))
     }
     else
     {
-        $searchErr = "Please enter the information";
+        $searchErr = "Совпадений не найдено";
         $_SESSION['searchErr'] = $searchErr;
         header("location: search_results.php");
 
