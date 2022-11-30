@@ -69,3 +69,24 @@ function isSubscribed($link, $follower_id, $following_id)
     $result = mysqli_query($link, $sql);
     return mysqli_num_rows($result) > 0;
 }
+
+function getPostCnt($link, $user_id) {
+    $sql = "SELECT COUNT(post_id) AS cnt FROM post WHERE user_id='$user_id'";
+    $result = mysqli_query($link, $sql);
+    $row = mysqli_fetch_array($result);
+    return $row['cnt'];
+}
+
+function getFollowersCnt($link, $user_id) {
+    $sql = "SELECT COUNT(follower_id) AS cnt FROM follow WHERE following_id='$user_id'";
+    $result = mysqli_query($link, $sql);
+    $row = mysqli_fetch_array($result);
+    return $row['cnt'];
+}
+
+function getFollowingsCnt($link, $user_id) {
+    $sql = "SELECT COUNT(following_id) AS cnt FROM follow WHERE follower_id='$user_id'";
+    $result = mysqli_query($link, $sql);
+    $row = mysqli_fetch_array($result);
+    return $row['cnt'];
+}

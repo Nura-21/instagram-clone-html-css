@@ -212,9 +212,9 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                     <span><?php echo $recommended_user_name ?></span>
                 </div>
                 <div class="profile-stats flex row">
-                    <span><b>9</b> публикаций</span>
-                    <span><b>300</b> подписчиков</span>
-                    <span><b>200</b> подписок</span>
+                    <span><b><?php echo getPostCnt($link, $recommended_user_id)?></b> публикаций</span>
+                    <span><b><?php echo getFollowingsCnt($link, $recommended_user_id)?></b> подписчиков</span>
+                    <span><b><?php echo getFollowersCnt($link, $recommended_user_id)?></b> подписок</span>
                 </div>
                 <div class="profile-desc flex col">
                     <span><?php echo $recommended_user_description ?></span>
