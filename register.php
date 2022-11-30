@@ -1,6 +1,12 @@
 <?php
 require_once "config.php";
 
+session_start();
+
+$_SESSION = array();
+
+session_destroy();
+
 $username = $password = $confirm_password = "";
 $username_err = $password_err = $confirm_password_err = "";
 
