@@ -1,7 +1,7 @@
 <?php
 require_once "config.php";
+require "functions/functions.php";
 
-// Check if user is logged in
 
 session_start();
 
@@ -12,14 +12,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 $id = $_SESSION['id'];
 
-$user_data_result = mysqli_query($link, "SELECT description, avatar FROM user WHERE user_id='$id LIMIT 1'");
-$user_data_row = mysqli_fetch_array($user_data_result);
+$current_user = getUserData($link, $id);
+$current_user_description = $current_user['description'];
+$current_user_avatar = $current_user['avatar'];
 
-$description = $user_data_row['description'];
-$avatar = $user_data_row['avatar'];
-
-$posts_result = mysqli_query($link, "SELECT post_id, photo FROM post WHERE user_id='$id'");
-$posts = mysqli_fetch_all($posts_result, MYSQLI_ASSOC);
+$posts = getUserPosts($link, $id);
 
 
 
@@ -193,7 +190,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($avatar) . '" width="26px" height="26px"/>'; ?>
+            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px" height="26px"/>'; ?>
         </a>
     </nav>
 </header>
@@ -202,7 +199,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
         <div class="profile-header flex row align-center">
             <div class="profile-logo flex justify-center img">
                 <?php echo '<div class="profile-logo flex justify-center img" >
-                    <img src="data:image/jpeg;base64,' . base64_encode($avatar) . '" style="height: 150px; width: 150px;"/>      
+                    <img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" style="height: 150px; width: 150px;"/>      
               </div>' ?>
             </div>
             <div class="profile-info flex col justify-between">
@@ -247,7 +244,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                     <span><b>200</b> подписок</span>
                 </div>
                 <div class="profile-desc flex col">
-                    <span><?php echo $description ?></span>
+                    <span><?php echo $current_user_description ?></span>
                 </div>
             </div>
         </div>
@@ -350,7 +347,6 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
         <div class="grid mb24">
             <?php
             for ($i = 0; $i < count($posts); $i++) {
-
                 $photo = $posts[$i]['photo'];
                 echo '<img src="data:image/jpeg;base64,' . base64_encode($photo) . '" class="' . $grid_classes[$i] . '" />';
             }
