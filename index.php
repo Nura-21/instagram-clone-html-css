@@ -1,14 +1,11 @@
 <?php
 require_once "config.php";
 require "functions/functions.php";
-
 session_start();
-
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("location: login.php");
     exit;
 }
-
 $id = $_SESSION['id'];
 $current_user = getCurrentUserData($link, $id);
 $current_user_description = $current_user['description'];
@@ -17,7 +14,6 @@ $ids = getFollowingsIds($link, $id);
 $posts = getFollowingsPosts($link, $ids);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,8 +35,8 @@ $posts = getFollowingsPosts($link, $ids);
       <div class="header-search">
           <form action="search.php" method="post">
               <i class="fas fa-search"></i>
-              <input type="text" placeholder="Поиск" name="search" />
-              <button type="submit" name="search_submit">submit</button>
+              <input type="text" placeholder="Имя пользователя" name="search" />
+              <button type="submit" name="search_submit" style="border: none">Искать</button>
           </form>
       </div>
       <nav class="header-nav">
