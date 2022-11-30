@@ -1,6 +1,7 @@
 <?php
-
 require_once "config.php";
+require "functions/functions.php";
+
 
 session_start();
 
@@ -11,12 +12,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 $id = $_SESSION['id'];
 
-$user_data_result = mysqli_query($link, "SELECT description, avatar FROM user WHERE user_id='$id LIMIT 1'");
-$user_data_row = mysqli_fetch_array($user_data_result);
-
-$description = $user_data_row['description'];
-$avatar = $user_data_row['avatar'];
-
+$current_user = getUserData($link, $id);
+$current_user_description = $current_user['description'];
+$current_user_avatar = $current_user['avatar'];
 
 ?>
 
@@ -66,7 +64,7 @@ $avatar = $user_data_row['avatar'];
                 ></path>
             </svg>
         </a>
-        <a href="chat.html" class="header-nav-link">
+        <a href="chat.php" class="header-nav-link">
             <svg
                     aria-label="Messenger"
                     class="_ab6-"
@@ -133,7 +131,7 @@ $avatar = $user_data_row['avatar'];
                 ></line>
             </svg>
         </a>
-        <a href="explore.html" class="header-nav-link">
+        <a href="explore.php" class="header-nav-link">
             <svg
                     aria-label="Найти людей"
                     class="_ab6-"
@@ -168,7 +166,7 @@ $avatar = $user_data_row['avatar'];
                 ></circle>
             </svg>
         </a>
-        <a href="likes.html" class="header-nav-link">
+        <a href="likes.php" class="header-nav-link">
             <svg
                     aria-label="Что нового"
                     class="_ab6-"
@@ -185,7 +183,13 @@ $avatar = $user_data_row['avatar'];
             </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-            <img src="images/cat.jpg" alt="" width="26px"/>
+            <?php
+            if (!$current_user_avatar) {
+                echo '<img src="images/placeholder.jpg" width="26px" height="26px" />';
+            } else {
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px"  height="26px"/>';
+            }
+            ?>
         </a>
     </nav>
 </header>
@@ -194,7 +198,7 @@ $avatar = $user_data_row['avatar'];
         <div class="profile-header flex row align-center">
             <div class="profile-logo flex justify-center img">
                 <?php echo '<div class="profile-logo flex justify-center img" >
-                    <img src="data:image/jpeg;base64,' . base64_encode($avatar) . '" style="height: 150px; width: 150px;"/>      
+                    <img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" style="height: 150px; width: 150px;"/>      
               </div>' ?>
             </div>
             <div class="profile-info flex col justify-between">
@@ -239,7 +243,7 @@ $avatar = $user_data_row['avatar'];
                     <span><b>200</b> подписок</span>
                 </div>
                 <div class="profile-desc flex col">
-                    <span><?php echo $description ?></span>
+                    <span><?php echo $current_user_description ?></span>
                 </div>
             </div>
         </div>
@@ -314,7 +318,7 @@ $avatar = $user_data_row['avatar'];
                     >ПУБЛИКАЦИИ</span
                 ></a
             >
-            <a href="profile-saved.html"
+            <a href="profile-saved.php"
             ><span class="active">
               <svg
                       aria-label=""

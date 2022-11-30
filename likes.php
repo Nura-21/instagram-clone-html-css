@@ -1,3 +1,23 @@
+<?php
+require_once "config.php";
+require "functions/functions.php";
+
+
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+
+$id = $_SESSION['id'];
+
+$current_user = getUserData($link, $id);
+$current_user_description = $current_user['description'];
+$current_user_avatar = $current_user['avatar'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -43,7 +63,7 @@
             ></path>
           </svg>
         </a>
-        <a href="chat.html" class="header-nav-link">
+        <a href="chat.php" class="header-nav-link">
           <svg
             aria-label="Messenger"
             class="_ab6-"
@@ -110,7 +130,7 @@
             ></line>
           </svg>
         </a>
-        <a href="explore.html" class="header-nav-link">
+        <a href="explore.php" class="header-nav-link">
           <svg
             aria-label="Найти людей"
             class="_ab6-"
@@ -145,7 +165,7 @@
             ></circle>
           </svg>
         </a>
-        <a href="likes.html" class="header-nav-link">
+        <a href="likes.php" class="header-nav-link">
           <svg
             aria-label="Что нового"
             class="_ab6-"
@@ -162,7 +182,13 @@
           </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-          <img src="images/cat.jpg" alt="" width="26px" />
+            <?php
+            if (!$current_user_avatar) {
+                echo '<img src="images/placeholder.jpg" width="26px" height="26px" />';
+            } else {
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px"  height="26px"/>';
+            }
+            ?>
         </a>
       </nav>
     </header>

@@ -76,7 +76,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                 ></path>
             </svg>
         </a>
-        <a href="chat.html" class="header-nav-link">
+        <a href="chat.php" class="header-nav-link">
             <svg
                 aria-label="Messenger"
                 class="_ab6-"
@@ -143,7 +143,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                 ></line>
             </svg>
         </a>
-        <a href="explore.html" class="header-nav-link">
+        <a href="explore.php" class="header-nav-link">
             <svg
                 aria-label="Найти людей"
                 class="_ab6-"
@@ -178,7 +178,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                 ></circle>
             </svg>
         </a>
-        <a href="likes.html" class="header-nav-link">
+        <a href="likes.php" class="header-nav-link">
             <svg
                 aria-label="Что нового"
                 class="_ab6-"
@@ -222,7 +222,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             </div>
         </div>
         <div class="profile-nav flex align-center justify-center mb24">
-            <a href="profile.html"
+            <a href="profile.php"
             ><span class="active"
                 ><svg
                         aria-label=""

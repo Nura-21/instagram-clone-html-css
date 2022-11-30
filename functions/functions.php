@@ -27,6 +27,9 @@ function getFollowingsIds($link, $user_id)
 
 function getFollowingsPosts($link, $user_ids)
 {
+    if (empty($user_ids)) {
+        return;
+    }
     $ids = implode(',', $user_ids);
     $posts = mysqli_query($link, "SELECT p.photo, p.caption, u.user_name, u.avatar FROM post p JOIN user u ON p.user_id = u.user_id WHERE p.user_id IN ($ids)");
     return mysqli_fetch_all($posts, MYSQLI_ASSOC);

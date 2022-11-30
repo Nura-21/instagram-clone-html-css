@@ -1,3 +1,24 @@
+<?php
+require_once "config.php";
+require "functions/functions.php";
+
+
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+
+$id = $_SESSION['id'];
+
+$current_user = getUserData($link, $id);
+$current_user_description = $current_user['description'];
+$current_user_avatar = $current_user['avatar'];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,7 +47,7 @@
         <a href="index.php" class="header-nav-link">
           <svg aria-label="Главная страница" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M9.005 16.545a2.997 2.997 0 0 1 2.997-2.997A2.997 2.997 0 0 1 15 16.545V22h7V11.543L12 2 2 11.543V22h7.005Z" fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="2"></path></svg>
         </a>
-        <a href="chat.html" class="header-nav-link">
+        <a href="chat.php" class="header-nav-link">
           <svg aria-label="Messenger" class="_ab6-" color="#262626" fill="#262626" height="24" role="img" viewBox="0 0 24 24" width="24"><path d="M12.003 1.131a10.487 10.487 0 0 0-10.87 10.57 10.194 10.194 0 0 0 3.412 7.771l.054 1.78a1.67 1.67 0 0 0 2.342 1.476l1.935-.872a11.767 11.767 0 0 0 3.127.416 10.488 10.488 0 0 0 10.87-10.57 10.487 10.487 0 0 0-10.87-10.57Zm5.786 9.001-2.566 3.983a1.577 1.577 0 0 1-2.278.42l-2.452-1.84a.63.63 0 0 0-.759.002l-2.556 2.049a.659.659 0 0 1-.96-.874L8.783 9.89a1.576 1.576 0 0 1 2.277-.42l2.453 1.84a.63.63 0 0 0 .758-.003l2.556-2.05a.659.659 0 0 1 .961.874Z"></path></svg>
         </a>
         <a href="post.php" class="header-nav-link">
@@ -72,7 +93,7 @@
             ></line>
           </svg>
         </a>
-        <a href="explore.html" class="header-nav-link">
+        <a href="explore.php" class="header-nav-link">
           <svg
             aria-label="Найти людей"
             class="_ab6-"
@@ -107,7 +128,7 @@
             ></circle>
           </svg>
         </a>
-        <a href="likes.html" class="header-nav-link">
+        <a href="likes.php" class="header-nav-link">
           <svg
             aria-label="Что нового"
             class="_ab6-"
@@ -124,7 +145,15 @@
           </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-          <img src="images/cat.jpg" alt="" width="26px" />
+          <a href="profile.php" class="header-nav-link img">
+            <?php
+            if (!$current_user_avatar) {
+                echo '<img src="images/placeholder.jpg" width="26px" height="26px" />';
+            } else {
+            echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px"  height="26px"/>';
+            }
+            ?>
+          </a>
         </a>
       </nav>
     </header>

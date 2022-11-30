@@ -19,7 +19,6 @@ $current_user_avatar = $current_user['avatar'];
 $posts = getUserPosts($link, $id);
 
 
-
 $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth");
 
 
@@ -46,7 +45,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
     <div class="header-search">
         <form action="search.php" method="post">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Поиск" name="search" />
+            <input type="text" placeholder="Поиск" name="search"/>
             <input type="submit" name="search_submit">
         </form>
     </div>
@@ -71,7 +70,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                 ></path>
             </svg>
         </a>
-        <a href="chat.html" class="header-nav-link">
+        <a href="chat.php" class="header-nav-link">
             <svg
                     aria-label="Messenger"
                     class="_ab6-"
@@ -138,7 +137,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                 ></line>
             </svg>
         </a>
-        <a href="explore.html" class="header-nav-link">
+        <a href="explore.php" class="header-nav-link">
             <svg
                     aria-label="Найти людей"
                     class="_ab6-"
@@ -173,7 +172,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                 ></circle>
             </svg>
         </a>
-        <a href="likes.html" class="header-nav-link">
+        <a href="likes.php" class="header-nav-link">
             <svg
                     aria-label="Что нового"
                     class="_ab6-"
@@ -190,7 +189,13 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px" height="26px"/>'; ?>
+            <?php
+            if (!$current_user_avatar) {
+                echo '<img src="images/placeholder.jpg" width="26px" height="26px" />';
+            } else {
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px"  height="26px"/>';
+            }
+            ?>
         </a>
     </nav>
 </header>
@@ -198,9 +203,13 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
     <section class="profile flex col">
         <div class="profile-header flex row align-center">
             <div class="profile-logo flex justify-center img">
-                <?php echo '<div class="profile-logo flex justify-center img" >
-                    <img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" style="height: 150px; width: 150px;"/>      
-              </div>' ?>
+                <?php
+                if (!$current_user_avatar) {
+                    echo '<img src="images/placeholder.jpg" width="150px" height="150px" />';
+                } else {
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="150px"  height="150px"/>';
+                }
+                ?>
             </div>
             <div class="profile-info flex col justify-between">
                 <div class="profile-login flex row align-center">
@@ -249,7 +258,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             </div>
         </div>
         <div class="profile-nav flex align-center justify-center mb24">
-            <a href="profile.html"
+            <a href="profile.php"
             ><span class="active"
                 ><svg
                             aria-label=""

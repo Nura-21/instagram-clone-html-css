@@ -7,6 +7,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     exit;
 }
 $id = $_SESSION['id'];
+
 $current_user = getUserData($link, $id);
 $current_user_description = $current_user['description'];
 $current_user_avatar = $current_user['avatar'];
@@ -59,7 +60,7 @@ $recommended_users = getRecommendedUsers($link, $id);
                 ></path>
             </svg>
         </a>
-        <a href="chat.html" class="header-nav-link">
+        <a href="chat.php" class="header-nav-link">
             <svg
                     aria-label="Messenger"
                     class="_ab6-"
@@ -126,7 +127,7 @@ $recommended_users = getRecommendedUsers($link, $id);
                 ></line>
             </svg>
         </a>
-        <a href="explore.html" class="header-nav-link">
+        <a href="explore.php" class="header-nav-link">
             <svg
                     aria-label="Найти людей"
                     class="_ab6-"
@@ -161,7 +162,7 @@ $recommended_users = getRecommendedUsers($link, $id);
                 ></circle>
             </svg>
         </a>
-        <a href="likes.html" class="header-nav-link">
+        <a href="likes.php" class="header-nav-link">
             <svg
                     aria-label="Что нового"
                     class="_ab6-"
@@ -178,7 +179,13 @@ $recommended_users = getRecommendedUsers($link, $id);
             </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-            <img src="images/cat.jpg" alt="" width="26px"/>
+            <?php
+            if (!$current_user_avatar) {
+                echo '<img src="images/placeholder.jpg" width="26px" height="26px" />';
+            } else {
+                echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="26px"  height="26px"/>';
+            }
+            ?>
         </a>
     </nav>
 </header>
@@ -202,13 +209,23 @@ $recommended_users = getRecommendedUsers($link, $id);
         <div class="main-posts flex col">
 
             <?php
+            if (!$posts) {
+                echo '<h1>Пока нет постов</h1>';
+            } else {
+
             foreach ($posts as $post) { ?>
                 <aside class="main-post border">
                     <div class="post-header flex align-center justify-between">
                         <div class="post-header-left flex row align-center">
-                            <a href="don-profile.html" class="flex row align-center"
+                            <a href="#" class="flex row align-center"
                                style="text-decoration: none; color: inherit;">
-                                <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($post['avatar']) . '" width="32" height="32"/>'; ?>
+                                <?php
+                                if (!$post['avatar']) {
+                                    echo '<img src="images/placeholder.jpg" width="32" height="32" />';
+                                } else {
+                                    echo '<img src="data:image/jpeg;base64,' . base64_encode($post['avatar']) . '" width="32"  height="32"/>';
+                                }
+                                ?>
                                 <div class="flex col">
                                     <span><b><?php echo $post['user_name'] ?></b></span>
                                     <span>Алматы</span>
@@ -323,14 +340,20 @@ $recommended_users = getRecommendedUsers($link, $id);
                         </span>
                     </div>
                 </aside>
-            <?php } ?>
+            <?php } }?>
         </div>
     </section>
     <section class="main-right flex col">
         <div class="main-my flex row align-center justify-between">
             <div class="main-my-left flex align-center">
                 <a href="profile.php" class="flex align-center" style="text-decoration: none; color: inherit;">
-                    <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="60" height="60"/>'; ?>
+                    <?php
+                    if (!$current_user_avatar) {
+                        echo '<img src="images/placeholder.jpg" width="60" height="60" />';
+                    } else {
+                        echo '<img src="data:image/jpeg;base64,' . base64_encode($current_user_avatar) . '" width="60"  height="60"/>';
+                    }
+                    ?>
                     <div class="flex col">
                         <span><b><?php echo $_SESSION['username'] ?></b></span>
                         <span><?php echo $current_user_description ?></span>
@@ -350,11 +373,6 @@ $recommended_users = getRecommendedUsers($link, $id);
                         class="flex row align-center justify-between img"
                         style="margin-top: 10px"
                 >
-                    <?php
-                        if (isset($_GET['recommended'])) {
-                            $_SESSION['recommended'] = $_GET['recommended'];
-                        }
-                    ?>
                     <a href="recommendation_profile.php?recommended=<?php echo $recommended_user['user_id'] ?>"
                        style="text-decoration: none; color: inherit;">
                         <div class="flex row align-center">
@@ -366,11 +384,17 @@ $recommended_users = getRecommendedUsers($link, $id);
                             }
                             ?>
                             <div class="flex col">
-                                <span><?php echo $recommended_user['user_name'] ?></span>
+                                <span>
+                                    <?php echo $recommended_user['user_name'] ?>
+                                </span>
                             </div>
                         </div>
                     </a>
-                    <span class="blue-text"> Подписаться </span>
+                    <span class="blue-text">
+                        <form action="subscribe.php?recommended=<?php echo $recommended_user['user_id']; ?>" method="post">
+                            <input type="submit" name="subscribe" value="subscribe">
+                        </form>
+                    </span>
                 </div>
             <?php } ?>
     </section>
