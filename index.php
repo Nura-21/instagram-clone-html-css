@@ -1,3 +1,27 @@
+<?php
+require_once "config.php";
+
+
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("location: login.php");
+    exit;
+}
+
+$id = $_SESSION['id'];
+$user_data_result = mysqli_query($link, "SELECT description, avatar FROM user WHERE user_id='$id LIMIT 1'");
+$user_data_row = mysqli_fetch_array($user_data_result);
+
+$description = $user_data_row['description'];
+$avatar = $user_data_row['avatar'];
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,8 +40,11 @@
       /></a>
 
       <div class="header-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Поиск" />
+          <form action="search.php" method="post">
+              <i class="fas fa-search"></i>
+              <input type="text" placeholder="Поиск" name="search" />
+              <button type="submit" name="search_submit">submit</button>
+          </form>
       </div>
       <nav class="header-nav">
         <a href="index.php" class="header-nav-link">
@@ -430,11 +457,10 @@
         <div class="main-my flex row align-center justify-between">
           <div class="main-my-left flex align-center">
             <a href="profile.php" class="flex align-center" style="text-decoration: none; color: inherit;">
-              <img src="images/cat.jpg" alt="" width="60" height="60" />
+                <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($avatar) . '" width="60" height="60"/>'; ?>
               <div class="flex col">
-                
-                <span><b>trdln</b></span>
-                <span>эн</span>
+                <span><b><?php echo $_SESSION['username'] ?></b></span>
+                <span><?php echo $description ?></span>
               </div>
             </a>
           </div>

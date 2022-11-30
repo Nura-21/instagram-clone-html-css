@@ -1,7 +1,6 @@
 <?php
-require_once "config.php";
 
-// Check if user is logged in
+require_once "config.php";
 
 session_start();
 
@@ -17,13 +16,6 @@ $user_data_row = mysqli_fetch_array($user_data_result);
 
 $description = $user_data_row['description'];
 $avatar = $user_data_row['avatar'];
-
-$posts_result = mysqli_query($link, "SELECT post_id, photo FROM post WHERE user_id='$id'");
-$posts = mysqli_fetch_all($posts_result, MYSQLI_ASSOC);
-
-
-
-$grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth");
 
 
 ?>
@@ -193,7 +185,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             </svg>
         </a>
         <a href="profile.php" class="header-nav-link img">
-            <?php echo '<img src="data:image/jpeg;base64,' . base64_encode($avatar) . '" width="26px" height="26px"/>'; ?>
+            <img src="images/cat.jpg" alt="" width="26px"/>
         </a>
     </nav>
 </header>
@@ -237,7 +229,7 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                                 stroke-width="2"
                         ></path>
                     </svg>
-                    <a href="logout.php" style="color: inherit"
+                    <a href="login.php" style="color: inherit"
                     ><i class="fas fa-sign-out-alt"></i
                         ></a>
                 </div>
@@ -252,8 +244,8 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             </div>
         </div>
         <div class="profile-nav flex align-center justify-center mb24">
-            <a href="profile.html"
-            ><span class="active"
+            <a href="profile.php"
+            ><span
                 ><svg
                             aria-label=""
                             class="_ab6-"
@@ -322,8 +314,8 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
                     >ПУБЛИКАЦИИ</span
                 ></a
             >
-            <a href="profile-saved.php"
-            ><span>
+            <a href="profile-saved.html"
+            ><span class="active">
               <svg
                       aria-label=""
                       class="_ab6-"
@@ -348,13 +340,51 @@ $grid_classes = array("first", "second", "third", "fourth", "fifth", "sixth", "s
             >
         </div>
         <div class="grid mb24">
-            <?php
-            for ($i = 0; $i < count($posts); $i++) {
-
-                $photo = $posts[$i]['photo'];
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($photo) . '" class="' . $grid_classes[$i] . '" />';
-            }
-            ?>
+            <img
+                    src="https://picsum.photos/400/400?sig=1"
+                    alt=""
+                    class="first"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=2"
+                    alt=""
+                    class="second"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=3"
+                    alt=""
+                    class="third"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=4"
+                    alt=""
+                    class="forth"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=5"
+                    alt=""
+                    class="fifth"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=6"
+                    alt=""
+                    class="six"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=7"
+                    alt=""
+                    class="seven"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=8"
+                    alt=""
+                    class="eight"
+            />
+            <img
+                    src="https://picsum.photos/400/400?sig=9"
+                    alt=""
+                    class="nine"
+            />
         </div>
     </section>
 </main>

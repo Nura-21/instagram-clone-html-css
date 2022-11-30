@@ -16,8 +16,11 @@
       /></a>
 
       <div class="header-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Поиск" />
+        <form action="search.php" method="post">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Поиск" name="search" />
+          <input type="submit" name="search_submit">
+        </form>
       </div>
       <nav class="header-nav">
         <a href="index.php" class="header-nav-link">
@@ -130,7 +133,7 @@
         <section class="chat-left flex col">
           <div class="chat-header flex row align-center justify-center">
             <div class="chat-header-user flex row align-center justify-center">
-              <span><b>trdln</b></span>
+              <span><b><?php echo $_SESSION['username'] ?></b></span>
               <svg
                 aria-label='Значок "стрелка вниз"'
                 class="_ab6-"

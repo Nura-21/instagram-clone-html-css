@@ -16,8 +16,11 @@
         /></a>
 
     <div class="header-search">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Поиск"/>
+        <form action="search.php" method="post">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Поиск" name="search" />
+            <input type="submit" name="search_submit">
+        </form>
     </div>
     <nav class="header-nav">
         <a href="index.php" class="header-nav-link">
