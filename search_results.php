@@ -14,6 +14,13 @@ if(isset($_SESSION['searchErr']))
     unset($_SESSION['searchErr']);
 }
 
+
+if (!isset($_SESSION['search_details']))
+{
+    echo "No results found";
+}
+
+
 $search_results = $_SESSION['search_details'];
 
 
@@ -43,3 +50,7 @@ $search_results = $_SESSION['search_details'];
 </body>
 
 </html>
+
+<?php
+
+?>
