@@ -1,26 +1,16 @@
 <?php
-require_once "config.php";
-
-
-session_start();
-
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    header("location: login.php");
-    exit;
-}
-
-$id = $_SESSION['id'];
-$user_data_result = mysqli_query($link, "SELECT description, avatar FROM user WHERE user_id='$id LIMIT 1'");
-$user_data_row = mysqli_fetch_array($user_data_result);
-
-$description = $user_data_row['description'];
-$avatar = $user_data_row['avatar'];
-
-
-
-
+  require_once "config.php";
+  session_start();
+  if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+      header("location: login.php");
+      exit;
+  }
+  $id = $_SESSION['id'];
+  $user_data_result = mysqli_query($link, "SELECT description, avatar FROM user WHERE user_id='$id LIMIT 1'");
+  $user_data_row = mysqli_fetch_array($user_data_result);
+  $description = $user_data_row['description'];
+  $avatar = $user_data_row['avatar'];
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -42,8 +32,8 @@ $avatar = $user_data_row['avatar'];
       <div class="header-search">
           <form action="search.php" method="post">
               <i class="fas fa-search"></i>
-              <input type="text" placeholder="Поиск" name="search" />
-              <button type="submit" name="search_submit">submit</button>
+              <input type="text" placeholder="Имя пользователя" name="search" />
+              <button type="submit" name="search_submit" style="border: none">Искать</button>
           </form>
       </div>
       <nav class="header-nav">
