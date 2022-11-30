@@ -193,14 +193,14 @@ $recommended_users = getRecommendedUsers($link, $id);
     <section class="main-left flex col">
         <?php
             if($followed_users) {
-                ?> <div class="main-stories flex row align-center border justify-between"> <?php
+                ?> <div class="main-stories flex row align-center border"> <?php
                 foreach ($followed_users as $followed_user) { ?>
                     <div class="main-story flex col align-center">
                         <?php
                         if (!$followed_user['avatar']) {
                             echo '<img src="images/placeholder.jpg" width="36px" />';
                         } else {
-                            echo '<img src="data:image/jpeg;base64,' . base64_encode($followed_user['avatar']) . '" width="40"  height="55px"/>';
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($followed_user['avatar']) . '" width="66px"  height="66px"/>';
                         }
                         ?>
                         <span><?php echo $followed_user['user_name'] ?> </span>
