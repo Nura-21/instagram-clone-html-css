@@ -191,26 +191,31 @@ $recommended_users = getRecommendedUsers($link, $id);
 </header>
 <main class="main flex row justify-center">
     <section class="main-left flex col">
-        <div class="main-stories flex row align-center border justify-between">
-            <?php
-            foreach ($followed_users as $followed_user) { ?>
-                <div class="main-story flex col align-center">
-                    <?php
-                    if (!$followed_user['avatar']) {
-                        echo '<img src="images/placeholder.jpg" width="36px" />';
-                    } else {
-                        echo '<img src="data:image/jpeg;base64,' . base64_encode($followed_user['avatar']) . '" width="40"  height="55px"/>';
-                    }
-                    ?>
-                    <span><?php echo $followed_user['user_name'] ?> </span>
-                </div>
-            <?php } ?>
-        </div>
+        <?php
+            if($followed_users) {
+                ?> <div class="main-stories flex row align-center border justify-between"> <?php
+                foreach ($followed_users as $followed_user) { ?>
+                    <div class="main-story flex col align-center">
+                        <?php
+                        if (!$followed_user['avatar']) {
+                            echo '<img src="images/placeholder.jpg" width="36px" />';
+                        } else {
+                            echo '<img src="data:image/jpeg;base64,' . base64_encode($followed_user['avatar']) . '" width="40"  height="55px"/>';
+                        }
+                        ?>
+                        <span><?php echo $followed_user['user_name'] ?> </span>
+                    </div>
+                <?php }
+                ?> 
+                </div> 
+                <?php
+            }
+            ?>
         <div class="main-posts flex col">
 
             <?php
             if (!$posts) {
-                echo '<h1>Пока нет постов</h1>';
+                echo '<h1 style="color: #dedede">Пока нет постов</h1>';
             } else {
 
             foreach ($posts as $post) { ?>
@@ -392,7 +397,7 @@ $recommended_users = getRecommendedUsers($link, $id);
                     </a>
                     <span class="blue-text">
                         <form action="subscribe.php?recommended=<?php echo $recommended_user['user_id']; ?>" method="post">
-                            <input type="submit" name="subscribe" value="subscribe">
+                            <input style="width: 110px" type="submit" id="log" name="subscribe" value="Подписаться">
                         </form>
                     </span>
                 </div>

@@ -199,7 +199,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=1"
+                src="https://picsum.photos/100?random=1"
                 alt=""
               />
               <span><b>kbtu</b> подписался(-ась) на ваши обновления. </span>
@@ -209,7 +209,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=2"
+                src="https://picsum.photos/100?random=2"
                 alt=""
               />
               <span><b>votasbanned</b> подписался(-ась) на ваши обновления. </span>
@@ -219,7 +219,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=3"
+                src="https://picsum.photos/100?random=3"
                 alt=""
               />
               <span><b>dindindon</b> подписался(-ась) на ваши обновления. </span>
@@ -229,7 +229,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=4"
+                src="https://picsum.photos/100?random=4"
                 alt=""
               />
               <span><b>1fit</b> подписался(-ась) на ваши обновления. </span>
@@ -239,7 +239,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=5"
+                src="https://picsum.photos/100?random=5"
                 alt=""
               />
               <span><b>codemodekz</b> подписался(-ась) на ваши обновления. </span>
@@ -252,7 +252,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=6"
+                src="https://picsum.photos/100?random=6"
                 alt=""
               />
               <span><b>arbuz.kz</b> подписался(-ась) на ваши обновления. </span>
@@ -262,7 +262,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=7"
+                src="https://picsum.photos/100?random=7"
                 alt=""
               />
               <span><b>halykbank</b> подписался(-ась) на ваши обновления. </span>
@@ -272,7 +272,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=8"
+                src="https://picsum.photos/100?random=8"
                 alt=""
               />
               <span><b>kinopark</b> подписался(-ась) на ваши обновления. </span>
@@ -282,7 +282,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=9"
+                src="https://picsum.photos/100?random=9"
                 alt=""
               />
               <span><b>steppe</b> подписался(-ась) на ваши обновления. </span>
@@ -292,7 +292,7 @@ $current_user_avatar = $current_user['avatar'];
           <div class="flex row align-center justify-between likes-users">
             <div class="flex row align-center img likes-user">
               <img
-                src="https://source.unsplash.com/random/400x400?sig=10"
+                src="https://picsum.photos/100?random=10"
                 alt=""
               />
               <span><b>ztb</b> подписался(-ась) на ваши обновления. </span>
